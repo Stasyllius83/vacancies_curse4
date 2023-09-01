@@ -11,9 +11,8 @@ def main():
     for api in (sj, hh):
         api.get_vacancies(pages_count=10)
         vacancies_json.extend(api.get_formatted_vacancies())
-
     connector = Connector(keyword=keyword)
-    connector.insert(vacansies_json=vacancies_json)
+    connector.insert(vacancies_json=vacancies_json)
 
     while True:
         command = input(
