@@ -44,12 +44,13 @@ class HeadHunter(Engine):
         }
 
         for vacancy in self.vacancies:
+            salary_tmp = vacancy.get("salary") if vacancy.get("salary") and vacancy.get("salary") != 0 else None
             formatted_vacancy = {
                 "employer": vacancy["employer"],
                 "title": vacancy["name"],
                 "url": vacancy["url"],
                 "api": "HeadHunter",
-                "salary_from": vacancy["salary"] if vacancy["salary"] and vacancy["salary"] != 0 else None,
+                "salary_from": salary_tmp.get("from") if salary_tmp.get("from") and salary_tmp.get("from") != 0 else None,
                 "salary_to": vacancy["salary"] if vacancy["salary"] and vacancy["salary"] != 0 else None,
             }
 
