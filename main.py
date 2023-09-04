@@ -3,12 +3,11 @@ from classes import HeadHunter, SuperJob, Connector
 
 def main():
     vacancies_json = []
-    # keyword = input("Введите ключевое слово для поиска: ")
-    keyword = "Python"
+    keyword = input("Введите ключевое слово для поиска: ")
 
     sj = SuperJob(keyword)
     hh = HeadHunter(keyword)
-    for api in (sj, hh):
+    for api in (hh, sj):
         api.get_vacancies(pages_count=10)
         vacancies_json.extend(api.get_formatted_vacancies())
     connector = Connector(keyword=keyword)
@@ -24,8 +23,8 @@ def main():
             break
         elif command == "1":
             vacancies = connector.select()
-        # elif command == "2":
-            # vacancies = sort_by_salary_from()
+        elif command == "2":
+            vacancies = api.sort_by_salary_from()
 
         for vacancy in vacancies:
             print(vacancy, end='\n')
